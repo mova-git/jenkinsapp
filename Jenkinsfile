@@ -38,13 +38,12 @@ pipeline {
 
             // Step 3: Move JAR to Apache path (usually not ideal, but for demo it’s fine)
             sh '''
-            ssh ubuntu@3.109.158.101'
-              sudo mv /tmp/app.jar /var/www/html/app.jar
-            '
+            ssh -o StrictHostKeyChecking=no ubuntu@3.109.158.101 "sudo mv /tmp/app.jar /var/www/html/app.jar"
             '''
+
+            }
         }
     }
-}
 }
 }
 
