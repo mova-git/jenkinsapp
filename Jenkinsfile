@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh "${MAVEN_HOME}/bin/mvn clean package"
                 sh 'mv target/*.jar target/app.jar'
-                sh 'mv target/*.war target/app.war'
+                //sh 'mv target/*.war target/app.war'
             }
         }
         stage('Deploy to Remote Server') {
@@ -43,14 +43,14 @@ pipeline {
             '''
 
             // copying war file to path
-            sh '''
-            scp -o StrictHostKeyChecking=no target/*.war ubuntu@3.109.158.101:/tmp/app.war
-            '''
+            //sh '''
+            //scp -o StrictHostKeyChecking=no target/*.war ubuntu@3.109.158.101:/tmp/app.war
+            //'''
 
             //moving war file into apache
-            sh '''
-            ssh -o StrictHostKeyChecking=no ubuntu@3.109.158.101 "sudo mv /tmp/app.war /var/www/html/app.war"
-            '''
+            //sh '''
+           // ssh -o StrictHostKeyChecking=no ubuntu@3.109.158.101 "sudo mv /tmp/app.war /var/www/html/app.war"
+            //'''
 
             }
         }
