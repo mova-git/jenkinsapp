@@ -25,7 +25,7 @@ pipeline {
 
             // Step 1: Install Apache HTTPD
             sh '''
-            ssh -o StrictHostKeyChecking=no ubuntu@3.109.158.101 '
+            ssh -o StrictHostKeyChecking=no ubuntu@3.7.71.250 '
               sudo apt update &&
               sudo apt install -y apache2
             '
@@ -33,12 +33,12 @@ pipeline {
 
             // Step 2: Copy the JAR to the remote server
             sh '''
-            scp -o StrictHostKeyChecking=no target/app.jar ubuntu@3.109.158.101:/tmp/app.jar
+            scp -o StrictHostKeyChecking=no target/app.jar ubuntu@3.7.71.250:/tmp/app.jar
             '''
 
             // Step 3: Move JAR to Apache path (usually not ideal, but for demo it’s fine)
             sh '''
-            ssh -o StrictHostKeyChecking=no ubuntu@3.109.158.101 "sudo mv /tmp/app.jar /var/www/html/app.jar"
+            ssh -o StrictHostKeyChecking=no ubuntu@3.7.71.250 "sudo mv /tmp/app.jar /var/www/html/app.jar"
             '''
 
             }
