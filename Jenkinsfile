@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh "${MAVEN_HOME}/bin/mvn clean package"
                 sh 'mv target/*.jar target/app.jar'
+                sh 'mv target/*.war target/app.war'
             }
         }
         stage('Deploy to Remote Server') {
